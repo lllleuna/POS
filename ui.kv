@@ -1,0 +1,372 @@
+<WindowManager>:
+    MainWindow:
+    SecondWindow:
+    ProfileWindow:
+    BillsWindow:
+    SignupWindow:
+
+<ScrollViewWindow@SecondWindow>
+    SecondWindow:
+        size_hint: 1, None
+        height: 4000
+
+<MainWindow>:
+    name: "main"
+
+    Label:
+        text: "Welcome!"
+        font_size: root.width/25
+        bold: True
+        color: 0, 0, 0, 1
+        pos_hint: {'center_x': .3, 'center_y': .8}
+    Label:
+        text: "Please sign in to continue."
+        font_size: root.width/55
+        color: 0, 0, 0, 1
+        pos_hint: {'center_x': .32, 'center_y': .74}
+    TextInput:
+        id: unametxt
+        hint_text: "Username"
+        size_hint: ".58dp", ".05dp"
+        pos_hint: {'center_x': .5, 'center_y': .6}
+        multiline: False
+    TextInput:
+        id: passtxt
+        password: True
+        hint_text: "Password"
+        size_hint: ".58dp", ".05dp"
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        multiline: False
+    Button:
+        id: sinbtn
+        size_hint: ".58dp", ".08dp"
+        pos_hint: {'center_x': .5, 'center_y': .4}
+        text: "Sign in"
+        font_size: root.width/40
+        on_release: 
+            app.check_account(unametxt, passtxt)
+            root.manager.transition.direction = "left"
+    Label:
+        text: "Don't have an account? Click sign up."
+        font_size: root.width/55
+        color: 0, 0, 0, 1
+        pos_hint: {'center_x': .36, 'center_y': .23}
+    Button:
+        id: supbtn
+        size_hint: ".58dp", ".08dp"
+        background_normal: ''
+        background_color: 1, 1, 1, 1
+        pos_hint: {'center_x': .5, 'center_y': .15}
+        text: "Sign up"
+        color: 0, 0, 0, 1
+        font_size: root.width/40
+        on_release: 
+            app.root.current = "signup"
+            root.manager.transition.direction = "left"
+
+<SignupWindow>:
+    name: "signup"
+    usernew: usernewtxt
+    namenew: namenewtxt
+    emailnew: emailnewtxt
+    agenew: agenewtxt
+    sexnew: sexnewtxt
+    passnew: passnewtxt
+    conpassnew: conpassnewtxt
+    Label:
+        text: "Register Now!"
+        font_size: root.width/25
+        bold: True
+        color: 0, 0, 0, 1
+        pos_hint: {'center_x': .5, 'center_y': .90}
+    Label:
+        text: "Please provide all the ask information."
+        font_size: root.width/55
+        color: 0, 0, 0, 1
+        pos_hint: {'center_x': .5, 'center_y': .83}
+    TextInput:
+        id: usernewtxt
+        hint_text: "Username"
+        size_hint: ".45dp", ".045dp"
+        pos_hint: {'center_x': .5, 'center_y': .72}
+        multiline: False
+    TextInput:
+        id: namenewtxt
+        hint_text: "Full Name"
+        size_hint: ".45dp", ".045dp"
+        pos_hint: {'center_x': .5, 'center_y': .63}
+        multiline: False
+    TextInput:
+        id: emailnewtxt
+        hint_text: "Email"
+        size_hint: ".45dp", ".045dp"
+        pos_hint: {'center_x': .5, 'center_y': .54}
+        multiline: False
+    TextInput:
+        id: agenewtxt
+        hint_text: "Age"
+        size_hint: ".20dp", ".045dp"
+        pos_hint: {'center_x': .375, 'center_y': .45}
+        multiline: False
+    TextInput:
+        id: sexnewtxt
+        hint_text: "Sex"
+        size_hint: ".20dp", ".045dp"
+        pos_hint: {'center_x': .626, 'center_y': .45}
+        multiline: False
+    TextInput:
+        id: passnewtxt
+        password: True
+        hint_text: "Password"
+        size_hint: ".45dp", ".045dp"
+        pos_hint: {'center_x': .5, 'center_y': .36}
+        multiline: False
+    TextInput:
+        id: conpassnewtxt
+        password: True
+        hint_text: "Confirm Password"
+        size_hint: ".45dp", ".045dp"
+        pos_hint: {'center_x': .5, 'center_y': .27}
+        multiline: False
+    Button:
+        id: backbtn
+        size_hint: ".20dp", ".06dp"
+        background_normal: ''
+        background_color: 1, 0, .5, 1
+        pos_hint: {'center_x': .35, 'center_y': .13}
+        text: "Cancel"
+        color: 0, 0, 0, 1
+        font_size: root.width/50
+        on_release: 
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+    Button:
+        id: submitbtn
+        size_hint: ".20dp", ".06dp"
+        background_normal: ''
+        background_color: .7, 0, 1, 1
+        pos_hint: {'center_x': .65, 'center_y': .13}
+        text: "Submit"
+        color: 0, 0, 0, 1
+        font_size: root.width/50
+        on_release: 
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
+<SecondWindow>: # FOOD and DRINKS
+    name: "second"
+    
+    Label:
+        text: "SMART POS"
+        color: 0, .5, 1, 1
+        font_size: root.width/40
+        pos_hint: {'x': 0, 'y': .9}
+        size_hint: ".18dp", ".08dp"
+    Button:
+        text: "Profile"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .8}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "profile"
+            root.manager.transition.direction = "left"
+    Button:
+        text: "Food & Drinks"
+        
+        background_normal: ''
+        background_color: (255/255.0, 202/255.0, 64/255.0, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .7}
+        size_hint: ".18dp", ".08dp"
+        
+    Button:
+        text: "Bills"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .6}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "bills"
+            root.manager.transition.direction = "left"
+    Button:
+        text: "Log out"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .5}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
+
+    StackLayout:
+        padding: ("160dp", "20dp", "0dp", "0dp")
+        orientation: 'rl-tb'
+        spacing: "15dp", "15dp"
+
+        Button:
+            text: "meal 1"
+            size: 160, 200
+            size_hint: None, None
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+
+            Image:
+                source: 'Assets/BurgerM.png'
+                size: self.parent.size
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+                
+        Button:
+            text: "meal 2"
+            size: 160, 200
+            size_hint: None, None
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+
+            Image:
+                source: 'Assets/CheeseB.png'
+                size: self.parent.size
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+        Button:
+            text: "meal 3"
+            size: 160, 200
+            size_hint: None, None
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+
+            Image:
+                source: 'Assets/ChiB.png'
+                size: self.parent.size
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+        Button:
+            text: "meal 4"
+            size: 160, 200
+            size_hint: None, None
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+
+            Image:
+                source: 'Assets/VegB.png'
+                size: self.parent.size
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+
+<ProfileWindow>: # PROFILE
+    name: "profile"
+    
+    Label:
+        text: "SMART POS"
+        color: 0, .5, 1, 1
+        font_size: root.width/40
+        pos_hint: {'x': 0, 'y': .9}
+        size_hint: ".18dp", ".08dp"
+    Button:
+        text: "Profile"
+        background_normal: ''
+        background_color: (255/255.0, 202/255.0, 64/255.0, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .8}
+        size_hint: ".18dp", ".08dp"
+    Button:
+        text: "Food & Drinks"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .7}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "second"
+            root.manager.transition.direction = "left"
+    Button:
+        text: "Bills"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .6}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "bills"
+            root.manager.transition.direction = "left"
+    Button:
+        text: "Log out"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .5}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+    
+
+
+<BillsWindow>: # BILLS
+    name: "bills"
+    
+    Label:
+        text: "SMART POS"
+        color: 0, .5, 1, 1
+        font_size: root.width/40
+        pos_hint: {'x': 0, 'y': .9}
+        size_hint: ".18dp", ".08dp"
+    Button:
+        text: "Profile"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .8}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "profile"
+            root.manager.transition.direction = "left"
+    Button:
+        text: "Food & Drinks"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .7}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "second"
+            root.manager.transition.direction = "left"
+    Button:
+        text: "Bills"
+        background_normal: ''
+        background_color: (255/255.0, 202/255.0, 64/255.0, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .6}
+        size_hint: ".18dp", ".08dp"
+    Button:
+        text: "Log out"
+        background_normal: ''
+        background_color: (248/255, 248/255, 247/255, 1)
+        color: (44/255.0, 51/255.0, 51/255.0, 1)
+        font_size: root.width/50
+        pos_hint: {'x': 0, 'y': .5}
+        size_hint: ".18dp", ".08dp"
+        on_release: 
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
